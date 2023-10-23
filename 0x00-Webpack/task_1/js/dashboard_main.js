@@ -10,12 +10,12 @@ $(document).ready(function() {
 
   let clickCount = 0;
 
-  function update() {
+  function updateCounter() {
     clickCount += 1;
-    $('#count').html(`${clickCount} clicks on the button`);
+    $('p#count').html(`${clickCount} clicks on the button`);
   }
 
-  const debounceupdate = _.debounce(update, 3000);
+  const debounceupdateCounter = _.debounce(updateCounter, 3000);
 
-  $('button').on('click', debounceupdate);
+  $('button').on('click', debounceupdateCounter);
 })
