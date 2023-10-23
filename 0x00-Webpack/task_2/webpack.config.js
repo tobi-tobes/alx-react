@@ -18,12 +18,14 @@ module.exports = {
       { 
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
         include: path.resolve(__dirname, './assets'),
-        type: 'asset/resource',
+        use: [{
+          loader: "url-loader",
+          options: {
+            limit: 8192,
+          }
+        }],
       },
     ]
-  },
-  performance: {
-    maxAssetSize: 500000,
   },
   plugins: [
     new HtmlWebpackPlugin({
