@@ -1,9 +1,12 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
   mode: 'production',
   entry: './js/dashboard_main.js',
+  performance: {
+    maxAssetSize: 1000000,
+    maxEntryPointSize: 1000000,
+  },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public'),
@@ -24,14 +27,12 @@ module.exports = {
           {
             loader: 'image-webpack-loader',
             options: {
-              mozjpeg: {
-                progressive: true,
-              },
+              bypassOnDebug: true,
+              disable: true,
             },
           },
         ],
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin()]
 };
