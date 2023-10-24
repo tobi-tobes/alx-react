@@ -20,4 +20,4 @@ $(document).ready(function() {
   const debounceupdateCounter = _.debounce(updateCounter, 1000);
 
   $('button').on('click', debounceupdateCounter);
-})
+});
