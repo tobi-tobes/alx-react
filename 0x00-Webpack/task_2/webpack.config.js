@@ -1,6 +1,8 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
+  mode: 'production',
   entry: './js/dashboard_main.js',
   output: {
     filename: 'bundle.js',
@@ -19,8 +21,17 @@ module.exports = {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+              },
+            },
+          },
         ],
       },
     ],
   },
+  plugins: [new HtmlWebpackPlugin()]
 };
