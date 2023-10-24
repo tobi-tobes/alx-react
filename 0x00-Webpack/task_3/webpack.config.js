@@ -1,37 +1,55 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
-  entry: './js/dashboard_main.js',
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
+  mode: 'production',
+  entry: {
+    header: './header/header.js',
+    body: './body/body.js',
+    footer: './footer/footer.js',
   },
-  devServer: {
-    contentBase: path.join(__dirname, 'public'),
-    port: 8564,
+  performance: {
+    maxAssetSize: 1000000,
+    maxEntrypointSize: 1000000,
+  },
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'public'),
   },
   module: {
     rules: [
-      { 
+      {
         test: /\.css$/,
-        include: path.resolve(__dirname, './css'),
-        use: ["style-loader", "css-loader"] 
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
       },
-      { 
-        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        include: path.resolve(__dirname, './assets'),
-        type: 'asset/resource',
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true,
+              disable: true,
+            },
+          },
+        ],
       },
-    ]
+    ],
   },
-  performance: {
-    maxAssetSize: 500000,
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './public',
+    port: 8564,
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: "Task 2",
+      title: 'Development',
     }),
   ],
 };
