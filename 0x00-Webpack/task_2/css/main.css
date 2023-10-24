@@ -10,7 +10,7 @@ p#count {
 }
 
 #logo {
-    background-image: url('../assets/holberton-logo.jpg');
+    background: url('../assets/holberton-logo.jpg');
     background-repeat: no-repeat;
     background-size: 200px 200px;
     width: 200px;
