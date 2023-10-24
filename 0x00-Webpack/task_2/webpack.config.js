@@ -5,7 +5,7 @@ module.exports = {
   entry: './js/dashboard_main.js',
   performance: {
     maxAssetSize: 1000000,
-    maxEntryPointSize: 1000000,
+    maxEntrypointSize: 1000000,
   },
   output: {
     filename: 'bundle.js',
