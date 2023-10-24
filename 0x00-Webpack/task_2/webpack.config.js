@@ -1,45 +1,33 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'production',
   entry: './js/dashboard_main.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'public')
   },
   module: {
     rules: [
-      {
+      { 
         test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-        ],
+        include: path.resolve(__dirname, './css'),
+        use: ["style-loader", "css-loader"] 
       },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'images/[name].[ext]',
-            },
-          },
-        ],
+      { 
+        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        include: path.resolve(__dirname, './assets'),
+        type: 'asset/resource',
       },
-    ],
+    ]
+  },
+  performance: {
+    maxAssetSize: 500000,
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'css/main.css',
-    }),
     new HtmlWebpackPlugin({
-      template: 'index.html', // Path to your HTML template
-      filename: 'index.html', // Output HTML file name
+      title: "Task 2",
     }),
-    new CopyWebpackPlugin([{ from: 'assets', to: 'assets' }]),
   ],
 };
