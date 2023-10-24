@@ -12,16 +12,16 @@ module.exports = {
     rules: [
       { 
         test: /\.css$/,
-        include: path.resolve(__dirname, './css'),
-        use: ["style-loader", "css-loader"] 
+        include: [path.resolve(__dirname, './css')],
+        use: 'css-loader'
       },
       { 
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        include: path.resolve(__dirname, './assets'),
+        include: [path.resolve(__dirname, './assets')],
         use: [{
           loader: "url-loader",
           options: {
-            limit: 8192,
+            limit: 500000,
           }
         }],
       },
