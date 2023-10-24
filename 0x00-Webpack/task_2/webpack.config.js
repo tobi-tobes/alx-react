@@ -1,35 +1,45 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'production',
   entry: './js/dashboard_main.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
+    path: path.resolve(__dirname, 'public'),
   },
   module: {
     rules: [
-      { 
+      {
         test: /\.css$/,
-        include: [path.resolve(__dirname, './css')],
-        use: 'css-loader'
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+        ],
       },
-      { 
-        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        include: [path.resolve(__dirname, './assets')],
-        use: [{
-          loader: "url-loader",
-          options: {
-            limit: 500000,
-          }
-        }],
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[name].[ext]',
+            },
+          },
+        ],
       },
-    ]
+    ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: "Task 2",
+    new MiniCssExtractPlugin({
+      filename: 'css/main.css',
     }),
+    new HtmlWebpackPlugin({
+      template: 'index.html', // Path to your HTML template
+      filename: 'index.html', // Output HTML file name
+    }),
+    new CopyWebpackPlugin([{ from: 'assets', to: 'assets' }]),
   ],
 };
