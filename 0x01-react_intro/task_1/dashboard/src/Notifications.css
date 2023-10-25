@@ -1,0 +1,8 @@
+:root {
+    --color-primary: #d93654;
+}
+
+.Notifications {
+    border: 2px solid var(--color-primary);
+    padding: 2rem;
+}

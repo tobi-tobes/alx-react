@@ -1,0 +1,59 @@
+/* General App Styling */
+
+:root {
+  --color-primary: #d93654;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.App {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* App Header Styling */
+
+.App-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.App-logo {
+  background: url('./holberton-logo.jpg');
+  background-size: 200px 200px;
+  width: 200px;
+  height: 200px;
+}
+
+/* App Body Styling */
+
+.App-body {
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+
+/* App Footer Styling */
+
+.App-footer {
+  text-align: center;
+  font-style: italic;
+  border-top: 2px solid var(--color-primary);
+  height: 4rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
