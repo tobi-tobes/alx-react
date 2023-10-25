@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: './src/index.js',
   performance: {
     maxAssetSize: 1000000,
@@ -16,9 +16,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use: ['babel-loader'],
       },
       {
         test: /\.css$/,
@@ -44,7 +42,9 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './dist',
-    open: true
+    contentBase: path.join(__dirname, 'dist'),
+    port: 3000,
+    open: true,
+    hot: true,
   },
 };
