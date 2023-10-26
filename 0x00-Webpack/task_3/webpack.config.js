@@ -3,12 +3,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
-  entry: {
-    header: './header/header.js',
-    body: './body/body.js',
-    footer: './footer/footer.js',
-  },
+  mode: 'development',
+  entry: ['./header/header.js', './body/body.js', './footer/footer.js'],
   performance: {
     maxAssetSize: 1000000,
     maxEntrypointSize: 1000000,
@@ -40,6 +36,11 @@ module.exports = {
         ],
       },
     ],
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   devtool: 'inline-source-map',
   devServer: {
