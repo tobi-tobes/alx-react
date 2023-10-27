@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: ['./header/header.js', './body/body.js', './footer/footer.js'],
+  entry: ['./modules/header/header.js', './modules/body/body.js', './modules/footer/footer.js'],
   performance: {
     maxAssetSize: 1000000,
     maxEntrypointSize: 1000000,
