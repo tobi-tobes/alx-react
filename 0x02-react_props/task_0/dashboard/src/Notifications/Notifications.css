@@ -1,0 +1,17 @@
+:root {
+    --color-primary: #d93654;
+}
+
+.Notifications {
+    border: 2px dashed var(--color-primary);
+    padding: 1rem;
+    position: relative;
+}
+
+[data-urgency="default"] {
+    color: blue;
+}
+
+[data-urgency="urgent"] {
+    color: red;
+}
