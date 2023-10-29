@@ -1,0 +1,22 @@
+/* General App Styling */
+
+:root {
+    --color-primary: #d93654;
+}
+  
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* App Login Styling */
+
+.login {
+    margin-left: 2rem;
+}
+
+.password-label, input, .ok-button {
+    margin-left: 1rem;
+}
