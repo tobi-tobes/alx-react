@@ -24,6 +24,6 @@ describe('Notifications', function () {
       const wrapper = shallow(<Notifications />);
       const notificationItems = wrapper.find(NotificationItem);
       const firstNotificationItem = notificationItems.first();
-      expect(firstNotificationItem.html()).toBe('<li data-notification-type=\"urgent\"><strong>Urgent requirement</strong> - complete by EOD</li>');
+      expect(firstNotificationItem.html()).toBe('<li data-notification-type=\"default\">New course available</li>');
     });
   });

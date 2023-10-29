@@ -28,9 +28,9 @@ export default function Notifications() {
         <img src={CloseIcon} alt='' style={{width: '15px', height: '15px',}} />
       </button>
       <ul>
-        <NotificationItem type='urgent' html={{ __html: latestNotification }}/>
         <NotificationItem type='default' value='New course available'/>
         <NotificationItem type='urgent' value='New resume available'/>
+        <NotificationItem type='urgent' html={{ __html: latestNotification }}/>
       </ul>
     </div>
   );
