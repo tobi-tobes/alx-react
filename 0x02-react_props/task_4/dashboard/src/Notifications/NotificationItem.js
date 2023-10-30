@@ -23,6 +23,7 @@ NotificationItem.propTypes = {
 
 NotificationItem.defaultProps = {
   type: 'default',
+  html: {},
 }
 
 export default NotificationItem;
