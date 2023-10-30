@@ -1,0 +1,26 @@
+/* General App Styling */
+
+:root {
+    --color-primary: #d93654;
+}
+  
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* App Footer Styling */
+
+.App-footer {
+    text-align: center;
+    font-style: italic;
+    border-top: 2px solid var(--color-primary);
+    height: 4rem;
+    align-self: flex-end;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
