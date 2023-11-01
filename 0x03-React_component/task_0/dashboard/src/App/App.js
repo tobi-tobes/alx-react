@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './static css';
 import Header from '../Header/Header';
 import Notifications from '../Notifications/Notifications';
 import Footer from '../Footer/Footer';
@@ -12,6 +12,14 @@ const listCourses = [{id: 1, name: 'ES6', credit: 60}, {id: 2, name: 'Webpack', 
 const listNotifications = [{id: 1, type: 'default', value: 'New course available'}, {id: 2, type: 'urgent', value: 'New resume available'}, {id: 3, type: 'urgent', html: {__html: getLatestNotification()}}];
 
 class App extends React.Component {
+  static propTypes = {
+    isLoggedIn: PropTypes.bool,
+  };
+  
+  static defaultProps = {
+    isLoggedIn: false,
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -30,14 +38,6 @@ class App extends React.Component {
       </React.Fragment>
     );
   }
-}
-
-App.propTypes = {
-  isLoggedIn: PropTypes.bool,
-};
-
-App.defaultProps = {
-  isLoggedIn: false,
 }
 
 export default App;

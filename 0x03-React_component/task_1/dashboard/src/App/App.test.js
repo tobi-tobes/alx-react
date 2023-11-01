@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { JSDOM } from 'jsdom';
+import sinon from 'sinon';
 import App from './App';
 import Footer from '../Footer/Footer';
 import Login from '../Login/Login';
@@ -9,17 +9,6 @@ import Notifications from '../Notifications/Notifications';
 import CourseList from '../CourseList/CourseList'
 
 describe('App', function () {
-  beforeAll(() => {
-    const dom = new JSDOM('<!doctype html><html><body></body></html>');
-    global.window = dom.window;
-    global.document = dom.window.document;
-  });
-
-  afterAll(() => {
-    delete global.window;
-    delete global.document;
-  });
-
   it('renders without crashing', function () {
     const wrapper = shallow(<App />);
     expect(wrapper).toMatchSnapshot();
@@ -51,11 +40,10 @@ describe('App', function () {
   });
 
   it('calls the logOut and alert function with the message "Logging you out" when the ctrl + h keys are pressed', function () {
-    const wrapper = mount(<App />);
-    const instance = wrapper.instance();
-
-    window.dispatchEvent(new Event('keydown'));
-    expect()
+    const spy = sinon.spy()
+    const wrapper = mount(<App logOut={spy}/>);
+    wrapper.simulate('keydown', {key: 'h', ctrl: true});
+    expect(spy.calledOnce).toBe(true);
   });
 });
 
