@@ -1,5 +1,5 @@
 import React from 'react';
-import './static css';
+import './App.css';
 import Header from '../Header/Header';
 import Notifications from '../Notifications/Notifications';
 import Footer from '../Footer/Footer';
@@ -23,19 +23,19 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('keydown', (event) => {
+    document.addEventListener('keydown', (event) => {
       if (event.ctrlKey && event.key === 'h') {
         alert('Logging you out');
-        this.props.logOut;
+        this.props.logOut();
       }
     });
   }
 
   componentWillUnmount() {
-    window.removeEventListener('keydown', (event) => {
+    document.removeEventListener('keydown', (event) => {
       if (event.ctrlKey && event.key === 'h') {
         alert('Logging you out');
-        this.props.logOut;
+        this.props.logOut();
       }
     });
   }

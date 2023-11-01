@@ -1,5 +1,5 @@
 import React from 'react';
-import './static css';
+import './App.css';
 import Header from '../Header/Header';
 import Notifications from '../Notifications/Notifications';
 import Footer from '../Footer/Footer';
