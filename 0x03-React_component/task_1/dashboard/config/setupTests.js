@@ -1,8 +1,14 @@
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
+import encoding from 'text-encoding';
+
+const decoder = new encoding.TextEncoder();
+
+// Now import the Adapter
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import { jsdom } from 'jsdom';
 
 configure({ adapter: new Adapter() });
+
+const documentHTML = '<!doctype html><html><body><div id="root"></div></body></html>';
+global.document = jsdom(documentHTML);
+global.window = document.parentWindow;
