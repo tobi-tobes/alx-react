@@ -11,6 +11,7 @@ class Notifications extends React.PureComponent {
     super(props);
     
     this.markAsRead = this.markAsRead.bind(this);
+    this.renderCount = 0;
   }
 
   static propTypes = {
@@ -46,6 +47,7 @@ class Notifications extends React.PureComponent {
 
   render() {
     const { displayDrawer, listNotifications } = this.props;
+    this.renderCount += 1;
 
     if (listNotifications.length === 0) {
       return (

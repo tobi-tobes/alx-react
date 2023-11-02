@@ -62,4 +62,43 @@ describe('Notifications', function () {
       expect(textToFind.text()).toEqual("No new notification for now");
       expect(textToFind.text()).not.toEqual("Here is the list of notifications");
     });
+
+    it('calls the spy with the right message when calling the function markAsRead on an instance of the component', function () {
+      const consoleLogSpy = jest.spyOn(console, 'log');
+
+      const listNotifications = [{id: 1, type: 'default', value: 'New course available'}];
+      const wrapper = shallow(<Notifications displayDrawer listNotifications={listNotifications}/>);
+
+      const instance = wrapper.instance();
+      instance.markAsRead(listNotifications[0].id);
+
+      expect(consoleLogSpy).toHaveBeenCalledWith(`Notification ${listNotifications[0].id} has been marked as read`);
+
+      consoleLogSpy.mockRestore();
+    });
+
+    it('does not rerender when updating the props of the component with the same list', function () {
+      const listNotifications = [{id: 1, type: 'default', value: 'New course available'}, {id: 2, type: 'urgent', value: 'New resume available'}, {id: 3, type: 'urgent', html: {__html: 'test'}}];
+      const wrapper = shallow(<Notifications displayDrawer listNotifications={listNotifications}/>);
+
+      const initialRenderCount = wrapper.instance().renderCount;
+      wrapper.setProps({ listNotifications });
+
+      expect(wrapper.instance().renderCount).toBe(initialRenderCount);
+    });
+
+    it('rerenders when updating the props of the component with a longer list', function () {
+      const listNotifications = [{id: 1, type: 'default', value: 'New course available'}, {id: 2, type: 'urgent', value: 'New resume available'}, {id: 3, type: 'urgent', html: {__html: 'test'}}];
+      const longerListNotifications = [{id: 1, type: 'default', value: 'New course available'}, {id: 2, type: 'urgent', value: 'New resume available'}, {id: 3, type: 'urgent', html: {__html: 'test'}}, {id: 4, type: 'urgent', value: 'New notification available'}];
+      
+      const wrapper = shallow(<Notifications displayDrawer listNotifications={listNotifications}/>);
+
+      const initialRenderCount = wrapper.instance().renderCount;
+
+      wrapper.setProps({ listNotifications: longerListNotifications });
+
+      const newRenderCount = wrapper.instance().renderCount;
+
+      expect(newRenderCount).toBeGreaterThan(initialRenderCount);
+    });
   });
