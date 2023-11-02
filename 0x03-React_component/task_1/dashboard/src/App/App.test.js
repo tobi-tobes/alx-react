@@ -43,9 +43,7 @@ describe('App', function () {
   });
 
   it('calls the logOut and alert function with the message "Logging you out" when the ctrl + h keys are pressed', function () {
-    const originalAlert = global.alert;
-
-    global.alert = jest.fn();
+    const alertMock = jest.spyOn(window, 'alert');
     const logOutMock = jest.fn();
 
     const wrapper = shallow(<App isLoggedIn logOut={logOutMock} />);
@@ -53,10 +51,10 @@ describe('App', function () {
     const event = new KeyboardEvent('keydown', { ctrlKey: true, key: 'h' });
     document.dispatchEvent(event);
 
-    expect(global.alert).toHaveBeenCalledWith('Logging you out');
+    expect(alertMock).toHaveBeenCalledWith('Logging you out');
     expect(logOutMock).toHaveBeenCalled();
 
-    global.alert = originalAlert;
+    alertMock.mockRestore();
   });
 });
 
