@@ -42,7 +42,7 @@ class Notifications extends React.PureComponent {
   }
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.listNotifications.length >this.props.listNotifications.length;
+    return nextProps.listNotifications.length > this.props.listNotifications.length;
   }
 
   render() {
