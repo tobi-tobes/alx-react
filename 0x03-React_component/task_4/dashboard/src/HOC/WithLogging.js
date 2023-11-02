@@ -10,6 +10,10 @@ const withLogging = (WrappedComponent) => {
     componentWillUnmount() {
       console.log(`Component ${WrappedComponent.name || WrappedComponent.displayName || 'Component'} is going to unmount`);
     }
+
+    render() {
+      return <WrappedComponent {...this.props} />
+    }
   }
   WithLogging.displayName = `WithLogging(${WrappedComponent.name || WrappedComponent.displayName || 'Component'})`;
   return WithLogging;
