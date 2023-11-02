@@ -1,6 +1,9 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import sinon from 'sinon';
 import App from './App';
 import Footer from '../Footer/Footer';
 import Login from '../Login/Login';
@@ -40,10 +43,20 @@ describe('App', function () {
   });
 
   it('calls the logOut and alert function with the message "Logging you out" when the ctrl + h keys are pressed', function () {
-    const spy = sinon.spy()
-    const wrapper = mount(<App logOut={spy}/>);
-    wrapper.simulate('keydown', {key: 'h', ctrl: true});
-    expect(spy.calledOnce).toBe(true);
+    const originalAlert = global.alert;
+
+    global.alert = jest.fn();
+    const logOutMock = jest.fn();
+
+    const wrapper = shallow(<App isLoggedIn logOut={logOutMock} />);
+
+    const event = new KeyboardEvent('keydown', { ctrlKey: true, key: 'h' });
+    document.dispatchEvent(event);
+
+    expect(global.alert).toHaveBeenCalledWith('Logging you out');
+    expect(logOutMock).toHaveBeenCalled();
+
+    global.alert = originalAlert;
   });
 });
 

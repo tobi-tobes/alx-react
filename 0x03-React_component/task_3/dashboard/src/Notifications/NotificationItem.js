@@ -9,7 +9,7 @@ class NotificationItem extends React.Component {
     type: PropTypes.string.isRequired,
     value: PropTypes.string,
     id: PropTypes.number,
-    markAsRead: PropTypes.func.isRequired,
+    markAsRead: PropTypes.func,
   };
   
   static defaultProps = {

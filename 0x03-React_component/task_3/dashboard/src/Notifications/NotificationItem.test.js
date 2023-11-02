@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+*/
+
 import React from 'react';
 import { shallow } from 'enzyme';
 import NotificationItem from './NotificationItem';
@@ -31,5 +35,22 @@ describe('NotificationItem', function () {
     const listItem = wrapper.find('li');
 
     expect(listItem.html()).toBe('<li data-notification-type=\"default\">test</li>');
+  });
+
+  it('calls the spy with the right ID argument when simulating a click on the component', function () {
+    const markAsReadSpy = jest.fn();
+
+    const dummyProps = {
+      html: { __html: 'test' },
+      id: 1,
+      markAsRead: markAsReadSpy,
+    }
+
+    const wrapper = shallow(<NotificationItem {...dummyProps}/>);
+    const listItem = wrapper.find('li');
+
+    listItem.simulate('click');
+
+    expect(markAsReadSpy).toHaveBeenCalledWith(dummyProps.id);
   });
 });

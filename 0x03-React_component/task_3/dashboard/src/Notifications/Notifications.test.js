@@ -62,4 +62,18 @@ describe('Notifications', function () {
       expect(textToFind.text()).toEqual("No new notification for now");
       expect(textToFind.text()).not.toEqual("Here is the list of notifications");
     });
+
+    it('calls the spy with the right message when calling the function markAsRead on an instance of the component', function () {
+      const consoleLogSpy = jest.spyOn(console, 'log');
+
+      const listNotifications = [{id: 1, type: 'default', value: 'New course available'}];
+      const wrapper = shallow(<Notifications displayDrawer listNotifications={listNotifications}/>);
+
+      const instance = wrapper.instance();
+      instance.markAsRead(listNotifications[0].id);
+
+      expect(consoleLogSpy).toHaveBeenCalledWith(`Notification ${listNotifications[0].id} has been marked as read`);
+
+      consoleLogSpy.mockRestore();
+    });
   });
