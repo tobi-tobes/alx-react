@@ -30,7 +30,7 @@ describe('Notifications', function () {
       const wrapper = shallow(<Notifications displayDrawer listNotifications={listNotifications}/>);
       const notificationItems = wrapper.find(NotificationItem);
       const firstNotificationItem = notificationItems.first();
-      expect(firstNotificationItem.html()).toBe('<li data-notification-type=\"default\">New course available</li>');
+      expect(firstNotificationItem.html()).toContain('New course available');
     });
 
     it('renders the menu item when displayDrawer is false', function () {

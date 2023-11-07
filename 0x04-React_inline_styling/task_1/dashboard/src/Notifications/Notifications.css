@@ -1,16 +1,7 @@
-:root {
-    --color-primary: #d93654;
-}
-
 [data-notification-type="default"] {
     color: blue;
 }
 
 [data-notification-type="urgent"] {
     color: red;
-}
-
-.menuItem {
-    text-align: right;
-    margin-right: 2rem;
 }
