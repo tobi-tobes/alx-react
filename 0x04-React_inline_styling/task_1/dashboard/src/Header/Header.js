@@ -1,5 +1,4 @@
 import React from 'react';
-import logoImage from '../assets/holberton-logo.jpg'
 import { StyleSheet, css } from 'aphrodite';
 
 function Header() {
@@ -12,16 +11,18 @@ function Header() {
       color: '#d93654'
     },
     'App-logo': {
-      backgroundImage: `url('${logoImage}')`,
       width: '200px',
-      height: '200px',
-      backgroundSize: '200px 200px'
+      height: '200px'
+    },
+    img: {
+      width: "200px",
+      height: '200px'
     }
   });
   return (
     <div className={css(styles['App-header'])}>
         <div className={css(styles['App-logo'])}>
-          <img src='' alt=''/>
+          <img src='../assets/holberton-logo.jpg' alt='' className={css(styles.img)}/>
         </div>
         <h1>School dashboard</h1>
     </div>
