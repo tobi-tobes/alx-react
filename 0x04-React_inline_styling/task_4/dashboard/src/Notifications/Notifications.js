@@ -100,13 +100,13 @@ class Notifications extends React.PureComponent {
 
   static bounceKeyframes = {
     '0%': {
-      translateY: '-5px'
-    },
-    '50%': {
       translateY: '0px'
     },
-    '100%': {
+    '50%': {
       translateY: '5px'
+    },
+    '100%': {
+      translateY: '0px'
     }
   }
 

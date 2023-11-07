@@ -3,7 +3,6 @@ import { StyleSheet, css } from 'aphrodite';
 import PropTypes from 'prop-types';
 import CourseListRow from './CourseListRow';
 import CourseShape from './CourseShape';
-import './CourseList.css';
 
 function CourseList(props) {
   const listCourses = props.listCourses;
@@ -19,7 +18,7 @@ function CourseList(props) {
 
   if (listCourses.length === 0) {
     return (
-      <table>
+      <table className={css(styles.CourseList)}>
         <thead>
           <CourseListRow textFirstCell="No course available yet" isHeader={true}/>
         </thead>
