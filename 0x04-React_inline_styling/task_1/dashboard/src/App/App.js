@@ -35,17 +35,6 @@ class App extends React.Component {
     'App-body': {
       marginTop: '2rem',
       height: '25rem'
-    },
-    'App-footer': {
-      textAlign: 'center',
-      fontStyle: 'italic',
-      borderTop: '2px solid #d93654',
-      height: '4rem',
-      alignSelf: 'flex-end',
-      width: '100%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
     }
   });
 
@@ -83,9 +72,7 @@ class App extends React.Component {
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer auctor odio viverra neque aliquet accumsan. Phasellus faucibus a magna sit amet ullamcorper. Praesent sodales vulputate eros eget dapibus. Fusce sit amet sem leo. </p>
             </BodySection>
           </div>
-          <div className={css(App.appStyles['App-footer'])}>
-            <Footer />
-          </div>
+          <Footer />
         </div>
       </React.Fragment>
     );
