@@ -19,13 +19,15 @@ class App extends React.Component {
     this.state = {
       displayDrawer: false
     }
+    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
+    this.handleHideDrawer = this.handleHideDrawer.bind(this);
   }
 
-  handleDisplayDrawer = () => {
+  handleDisplayDrawer() {
     this.setState({ displayDrawer: true });
   }
 
-  handleHideDrawer = () => {
+  handleHideDrawer() {
     this.setState({ displayDrawer: false });
   }
 
