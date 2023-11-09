@@ -141,8 +141,8 @@ class Notifications extends React.PureComponent {
     if (listNotifications.length === 0) {
       return (
         <div className={css(Notifications.notificationsPanelStyle.smallScreenPanelContainer)}>
-          <div className={css(Notifications.notificationsPanelStyle.menuItemHover, displayDrawer ? Notifications.notificationsPanelStyle.dontDisplayMenuItem : Notifications.notificationsPanelStyle.menuItem)} id='menuItem' onClick={handleDisplayDrawer}>
-            <p>Your notifications</p>
+          <div className={css(Notifications.notificationsPanelStyle.menuItemHover, displayDrawer ? Notifications.notificationsPanelStyle.dontDisplayMenuItem : Notifications.notificationsPanelStyle.menuItem)} id='menuItem'>
+            <p onClick={handleDisplayDrawer}>Your notifications</p>
           </div>
           {displayDrawer && 
             <div className={css(Notifications.notificationsPanelStyle.Notifications, Notifications.notificationsPanelStyle.smallScreenDisplay)} id='Notifications'>
@@ -158,8 +158,8 @@ class Notifications extends React.PureComponent {
   
     return (
       <div className={css(Notifications.notificationsPanelStyle.smallScreenPanelContainer)}>
-        <div className={css(displayDrawer ? Notifications.notificationsPanelStyle.dontDisplayMenuItem : Notifications.notificationsPanelStyle.menuItem, Notifications.notificationsPanelStyle.menuItemHover)} id='menuItem' onClick={handleDisplayDrawer}>
-          <p>Your notifications</p>
+        <div className={css(displayDrawer ? Notifications.notificationsPanelStyle.dontDisplayMenuItem : Notifications.notificationsPanelStyle.menuItem, Notifications.notificationsPanelStyle.menuItemHover)} id='menuItem'>
+          <p onClick={handleDisplayDrawer}>Your notifications</p>
         </div>
         {displayDrawer && 
           <div className={css(Notifications.notificationsPanelStyle.Notifications, Notifications.notificationsPanelStyle.smallScreenDisplay)} id='Notifications'>
