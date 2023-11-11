@@ -1,5 +1,5 @@
 {
-  "name": "task_0",
+  "name": "task_1",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,7 +12,7 @@
   "jest": {
     "verbose": true,
     "setupFilesAfterEnv": [
-      "/home/tobi/alx-react/0x05-react_state/task_0/dashboard/config/setupTests.js"
+      "/home/tobi/alx-react/0x05-react_state/task_1/dashboard/config/setupTests.js"
     ],
     "transformIgnorePatterns": [
       "/node_modules/",

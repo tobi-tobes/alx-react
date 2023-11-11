@@ -18,7 +18,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       displayDrawer: false
-    }
+    };
     this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
     this.handleHideDrawer = this.handleHideDrawer.bind(this);
   }
