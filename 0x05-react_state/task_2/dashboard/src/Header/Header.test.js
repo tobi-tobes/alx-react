@@ -127,7 +127,7 @@ describe('Header', function () {
         <Header />
       </AppContext.Provider>
     );
-    const logOutLink = wrapper.find('#logoutSection em');
+    const logOutLink = wrapper.find('#logoutSection a');
     logOutLink.simulate('click');
     expect(logOutMock).toHaveBeenCalled();
   });

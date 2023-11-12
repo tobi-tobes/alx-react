@@ -43,7 +43,7 @@ class Header extends React.Component {
         </div>
         {user.isLoggedIn && 
             <section id='logoutSection' className={css(Header.styles.logoutSection)}>
-              <p>Welcome {user.email} (<em onClick={logOut} className={css(Header.styles.logOutLink)}>logout</em>)</p>
+              <p>Welcome {user.email} <em>(<a href='#' onClick={logOut} className={css(Header.styles.logOutLink)}>logout</a>)</em></p>
             </section>
         }
       </div>
