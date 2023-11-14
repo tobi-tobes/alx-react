@@ -146,7 +146,7 @@ class Notifications extends React.PureComponent {
           </div>
           {displayDrawer && 
             <div className={css(Notifications.notificationsPanelStyle.Notifications, Notifications.notificationsPanelStyle.smallScreenDisplay)} id='Notifications'>
-              <button aria-label='Close' onClick={handleHideDrawer()} style={Notifications.styles}>
+              <button aria-label='Close' onClick={handleHideDrawer} style={Notifications.styles}>
                 <img src={CloseIcon} alt='' style={{width: '15px', height: '15px',}}/>
               </button>
               <p>No new notification for now</p>
