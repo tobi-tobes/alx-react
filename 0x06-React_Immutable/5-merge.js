@@ -12,7 +12,7 @@ export function mergeElements(page1, page2) {
   const map1 = Map(page1);
   const map2 = Map(page2);
   const merged = map1.merge(map2);
-  const mergedList = List(merged.values());
+  const mergedList = List(Object.values(merged));
 
   return mergedList;
 }
