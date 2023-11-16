@@ -1,7 +1,7 @@
 import { Seq, fromJS } from 'immutable';
 
 export default function printBestStudents(object) {
-  const iter = Seq(fromJS(object)); // Convert object to Immutable Map
+  const iter = Seq(fromJS(object));
   const toPrint = iter
     .filter((student) => student.get('score') >= 70)
     .map((student) => student
