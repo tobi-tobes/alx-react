@@ -1,4 +1,5 @@
-import { LOGIN, LOGOUT, DISPLAY_NOTIFICATION_DRAWER, HIDE_NOTIFICATION_DRAWER } from './uiActionTypes';
+import { LOGIN, LOGOUT, DISPLAY_NOTIFICATION_DRAWER, HIDE_NOTIFICATION_DRAWER, LOGIN_SUCCESS, LOGIN_FAILURE } from './uiActionTypes';
+import 'node-fetch';
 
 // Action creators
 export function login(email, password) {
@@ -15,6 +16,32 @@ export function displayNotificationDrawer() {
 
 export function hideNotificationDrawer() {
   return { type: HIDE_NOTIFICATION_DRAWER };
+}
+
+export function loginSuccess() {
+  return { type: LOGIN_SUCCESS };
+}
+
+export function loginFailure() {
+  return { type: LOGIN_FAILURE };
+}
+
+export function loginRequest(email, password) {
+  return function(dispatch) {
+    dispatch(login(email, password));
+
+    return fetch('http://localhost:3000/login-success.json')
+      .then((response) => {
+        if (response.ok) {
+          dispatch(loginSuccess());
+        } else {
+          dispatch(loginFailure());
+        }
+      })
+      .catch((error) => {
+        dispatch(loginFailure());
+      });
+  };
 }
 
 // Bound action creators
