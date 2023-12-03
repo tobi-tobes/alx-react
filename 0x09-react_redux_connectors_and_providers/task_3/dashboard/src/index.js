@@ -3,7 +3,7 @@ import './index.css';
 import ReactDOM from 'react-dom';
 import { ConnectedApp as App } from './App/App';
 import reportWebVitals from './reportWebVitals';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from '@redux-devtools/extension';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import uiReducer from './reducers/uiReducer';
