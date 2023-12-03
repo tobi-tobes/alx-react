@@ -1,10 +1,13 @@
 import React from 'react';
 import { getFullYear, getFooterCopy } from '../utils/utils';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-function Footer() {
+function Footer(props) {
   const currentYear = getFullYear();
   const footerCopy = getFooterCopy(true);
+
+  const user = props.user;
 
   return (
     <div>
@@ -19,7 +22,7 @@ Footer.propTypes = {
 }
 
 Footer.defaultProps = {
-  user: {}
+  user: null
 }
 
 export const mapStateToProps = (state) => {
@@ -30,4 +33,4 @@ export const mapStateToProps = (state) => {
 
 const ConnectedFooter = connect(mapStateToProps)(Footer);
 
-export default ConnectedFooter;
+export { ConnectedFooter, Footer };

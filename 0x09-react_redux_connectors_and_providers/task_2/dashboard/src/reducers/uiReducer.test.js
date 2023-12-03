@@ -1,6 +1,7 @@
 import uiReducer from './uiReducer';
 import { selectCourse } from '../actions/courseActionCreators';
 import { displayNotificationDrawer } from '../actions/uiActionCreators';
+import { LOGIN, LOGOUT } from '../actions/uiActionTypes';
 import { Map } from 'immutable';
 
 describe('uiReducer', function() {
@@ -38,5 +39,33 @@ describe('uiReducer', function() {
     const newState = uiReducer(initialState, displayNotificationDrawer());
 
     expect(newState.toJS().isNotificationDrawerVisible).toEqual(true);
+  });
+
+  it('returns a state that updates the user property when the action LOGIN is passed', function() {
+    const initialState = Map({
+      isNotificationDrawerVisible: false,
+      isUserLoggedIn: false,
+      user: {}
+    });
+
+    const loginAction = { type: LOGIN, user: {email: 'test', password: 'test'}};
+
+    const newState = uiReducer(initialState, loginAction);
+
+    expect(newState.toJS().user).toEqual({email: 'test', password: 'test'});
+  });
+
+  it('returns a state that updates the user property when the action LOGOUT is passed', function() {
+    const initialState = Map({
+      isNotificationDrawerVisible: false,
+      isUserLoggedIn: false,
+      user: {}
+    });
+
+    const logoutAction = { type: LOGOUT};
+
+    const newState = uiReducer(initialState, logoutAction);
+
+    expect(newState.toJS().user).toEqual(null);
   });
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import { ConnectedHeader as Header } from '../Header/Header';
 import Notifications from '../Notifications/Notifications';
-import { ConnectedFooter as Footer }from '../Footer/Footer';
+import { ConnectedFooter as Footer } from '../Footer/Footer';
 import Login from '../Login/Login';
 import CourseList from '../CourseList/CourseList'
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';

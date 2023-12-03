@@ -3,6 +3,7 @@ import logoImage from '../assets/holberton-logo.jpg'
 import { StyleSheet, css } from 'aphrodite';
 import { logout } from '../actions/uiActionCreators';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 class Header extends React.Component {
   static styles = StyleSheet.create({
@@ -35,7 +36,7 @@ class Header extends React.Component {
   };
 
   static defaultProps = {
-    user: {},
+    user: null,
     logout: () => {}
   };  
 
@@ -70,6 +71,6 @@ export const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const ConnectedHeader= connect(mapStateToProps, mapDispatchToProps)(Header);
+const ConnectedHeader = connect(mapStateToProps, mapDispatchToProps)(Header);
 
-export default ConnectedHeader;
+export { ConnectedHeader, Header };
