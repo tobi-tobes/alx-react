@@ -5,7 +5,7 @@ import { Map } from 'immutable';
 const initialUiState = Map({
   isNotificationDrawerVisible: false,
   isUserLoggedIn: false,
-  user: {}
+  user: null
 });
 
 // reducer function
