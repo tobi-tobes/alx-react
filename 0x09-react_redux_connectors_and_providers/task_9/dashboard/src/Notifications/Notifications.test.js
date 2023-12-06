@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Notifications } from './Notifications';
+import Notifications from './Notifications';
 import NotificationItem from './NotificationItem';
 import {StyleSheetTestUtils} from 'aphrodite';
 
@@ -76,31 +76,6 @@ describe('Notifications', function () {
     expect(textToFind.text()).not.toEqual("Here is the list of notifications");
   });
 
-  it('does not rerender when updating the props of the component with the same list', function () {
-    const listNotifications = [{guid: '1', type: 'default', value: 'New course available'}, {guid: '2', type: 'urgent', value: 'New resume available'}, {guid: '3', type: 'urgent', html: {__html: 'test'}}];
-    const wrapper = shallow(<Notifications displayDrawer listNotifications={listNotifications}/>);
-
-    const initialRenderCount = wrapper.instance().renderCount;
-    wrapper.setProps({ listNotifications });
-
-    expect(wrapper.instance().renderCount).toBe(initialRenderCount);
-  });
-
-  it('rerenders when updating the props of the component with a longer list', function () {
-    const listNotifications = [{guid: '1', type: 'default', value: 'New course available'}, {guid: '3', type: 'urgent', html: {__html: 'test'}}];
-    const longerListNotifications = [{guid: '1', type: 'default', value: 'New course available'}, {guid: '2', type: 'urgent', value: 'New resume available'}, {guid: '3', type: 'urgent', html: {__html: 'test'}}, {guid: '4', type: 'urgent', value: 'New notification available'}];
-    
-    const wrapper = shallow(<Notifications displayDrawer listNotifications={listNotifications}/>);
-
-    const initialRenderCount = wrapper.instance().renderCount;
-
-    wrapper.setProps({ listNotifications: longerListNotifications });
-
-    const newRenderCount = wrapper.instance().renderCount;
-
-    expect(newRenderCount).toBeGreaterThan(initialRenderCount);
-  });
-
   it('calls handleDisplayDrawer when menu item is clicked', function () {
     const handleDisplayDrawerMock = jest.fn();
 
@@ -115,12 +90,6 @@ describe('Notifications', function () {
     const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={[]} handleHideDrawer={handleHideDrawerMock}/>);
     wrapper.find('button').simulate('click');
     expect(handleHideDrawerMock).toHaveBeenCalled();
-  });
-
-  it('dispatches the fetchNotifications action when mounted', function () {
-    const fetchNotificationsMock = jest.fn();
-    const wrapper = mount(<NotificationsContainer fetchNotifications={fetchNotificationsMock}/>);
-    expect(fetchNotificationsMock).toHaveBeenCalled();
   });
 
   it('calls setNotificationFilter with URGENT when the button is clicked', function () {

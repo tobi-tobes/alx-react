@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { Notifications } from './Notifications';
 import NotificationItem from './NotificationItem';
 import {StyleSheetTestUtils} from 'aphrodite';
@@ -115,5 +115,11 @@ describe('Notifications', function () {
     const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={[]} handleHideDrawer={handleHideDrawerMock}/>);
     wrapper.find('button').simulate('click');
     expect(handleHideDrawerMock).toHaveBeenCalled();
+  });
+
+  it('dispatches the fetchNotifications action when mounted', function () {
+    const fetchNotificationsMock = jest.fn();
+    const wrapper = mount(<NotificationsContainer fetchNotifications={fetchNotificationsMock}/>);
+    expect(fetchNotificationsMock).toHaveBeenCalled();
   });
 });

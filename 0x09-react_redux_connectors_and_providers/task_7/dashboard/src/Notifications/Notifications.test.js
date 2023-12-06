@@ -116,4 +116,10 @@ describe('Notifications', function () {
     wrapper.find('button').simulate('click');
     expect(handleHideDrawerMock).toHaveBeenCalled();
   });
+
+  it('dispatches the fetchNotifications action when mounted', function () {
+    const fetchNotificationsMock = jest.fn();
+    const wrapper = mount(<NotificationsContainer fetchNotifications={fetchNotificationsMock}/>);
+    expect(fetchNotificationsMock).toHaveBeenCalled();
+  });
 });
